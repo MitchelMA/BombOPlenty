@@ -1,0 +1,10 @@
+# This file will automatically update with entries for new content after a build and reload
+
+Items: {
+	WallBomb: {
+		DisplayName: Wall Bomb
+		Tooltip: A small explosion that will destroy most walls
+	}
+}
+
+Projectiles.WallBombProjectile.DisplayName: Wall Bomb Projectile

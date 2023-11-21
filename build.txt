@@ -1,0 +1,3 @@
+displayName = Bomb O' Plenty
+author = Mitchel
+version = 0.1
