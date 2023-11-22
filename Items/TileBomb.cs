@@ -1,8 +1,4 @@
-﻿using BombOPlenty.Helpers;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace BombOPlenty.Items;
+﻿namespace BombOPlenty.Items;
 
 public class TileBomb : ModItem
 {

@@ -52,7 +52,7 @@ public abstract class BombProjectile : ModProjectile
 
     protected void FuseParticleAi()
     {
-        var absFusePos = Projectile.Center + FuseRelPosition.RotatedBy(Projectile.rotation);
+        var absFusePos = Projectile.Center + FuseRelPosition.RotatedBy(Projectile.rotation) * 1.1f;
         if (!Main.rand.NextBool(2)) return;
         
         var fuseDust = Dust.NewDustDirect(absFusePos, 2, 2, DustID.Torch, 0, 0, 100);

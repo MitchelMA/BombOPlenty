@@ -12,7 +12,7 @@ public class TileBombProjectile : BombProjectile
         FuseRelPosition = new Vector2(10, -Projectile.height / 2f - 6f);
         Damage = 100;
         KnockBack = 10f;
-        Radius = 5f;
+        Radius = 6f;
         
         Projectile.aiStyle = ProjectileID.Bomb;
         Projectile.width = NormalSize.X;
@@ -37,10 +37,6 @@ public class TileBombProjectile : BombProjectile
         Projectile.rotation += Projectile.velocity.X * 0.1f;
     }
 
-    protected override void ExtraParticleAi()
-    {
-    }
-
     protected override void ParticleOnKill()
     {
         for (var i = 0; i < 50; i++)
@@ -57,7 +53,6 @@ public class TileBombProjectile : BombProjectile
         {
             var fireDust = Dust.NewDustDirect(fireLoc, 5, 5, DustID.Torch, 0, 0, 100);
             fireDust.velocity *= 5f;
-            fireDust.noGravity = false;
         }
     }
 
