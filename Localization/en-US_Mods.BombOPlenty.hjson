@@ -1,18 +1,18 @@
 # This file will automatically update with entries for new content after a build and reload
 
 Items: {
-	WallBomb: {
-		DisplayName: Wall Bomb
-		Tooltip: A small explosion that will destroy most walls
-	}
-
 	TileBomb: {
 		DisplayName: Tile Bomb
 		Tooltip: A small explosion that will destroy most tiles
 	}
+
+	HammerBomb: {
+		DisplayName: Hammer Bomb
+		Tooltip: Trump's worst nightmare
+	}
 }
 
 Projectiles: {
-	WallBombProjectile.DisplayName: Wall Bomb Projectile
+	HammerBombProjectile.DisplayName: Hammer Bomb Projectile
 	TileBombProjectile.DisplayName: Tile Bomb Projectile
 }

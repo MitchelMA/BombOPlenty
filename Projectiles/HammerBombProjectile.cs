@@ -3,39 +3,24 @@ using Terraria.GameContent.Achievements;
 
 namespace BombOPlenty.Projectiles;
 
-public class WallBombProjectile : BombProjectile
+public class HammerBombProjectile : BombProjectile
 {
     public override void SetDefaults()
     {
-        NormalSize = new Point(40, 40);
-        ExplodingSize = new Point(160, 160);
+        NormalSize = new Point(22, 30);
+        ExplodingSize = NormalSize * new Point(8, 8);
         FuseRelPosition = new Vector2(0, -Projectile.height / 2f - 6f);
         Damage = 85;
         KnockBack = 10f;
         Radius = 6f;
         
-        Projectile.aiStyle = ProjectileID.Bomb;
+        Projectile.CloneDefaults(ProjectileID.Bomb);
+        DrawOriginOffsetY = 5;
         Projectile.width = NormalSize.X;
         Projectile.height = NormalSize.Y;
-        Projectile.friendly = true;
-        Projectile.hostile = true;
-        Projectile.penetrate = -1;
+        Projectile.scale = 1.1f;
 
         Projectile.timeLeft = 4 * UnitHelpers.SecondsToTicks;
-    }
-
-    protected override void PositionalAi()
-    {
-        Projectile.ai[0] += 1f;
-        if (Projectile.ai[0] > 5f)
-        {
-            Projectile.ai[0] = 10f;
-            Projectile.velocity.X *= 0.99f;
-            Projectile.velocity.Y += 1 - 0.89f;
-        }
-        
-        // Rotation increased by velocity.X
-        Projectile.rotation += Projectile.velocity.X * 0.1f;
     }
 
     protected override void ParticleOnKill()
@@ -47,7 +32,7 @@ public class WallBombProjectile : BombProjectile
             smokeDust.velocity *= 3f;
             smokeDust.noGravity = true;
         }
-
+        
         var fireLoc = Projectile.Center - new Vector2(5);
         for (var i = 0; i < 90; i++)
         {

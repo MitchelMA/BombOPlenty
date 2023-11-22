@@ -14,27 +14,12 @@ public class TileBombProjectile : BombProjectile
         KnockBack = 10f;
         Radius = 6f;
         
-        Projectile.aiStyle = ProjectileID.Bomb;
+        Projectile.CloneDefaults(ProjectileID.Bomb);
         Projectile.width = NormalSize.X;
         Projectile.height = NormalSize.Y;
-        Projectile.friendly = true;
-        Projectile.hostile = true;
         Projectile.penetrate = -1;
 
         Projectile.timeLeft = 4 * UnitHelpers.SecondsToTicks;
-    }
-
-    protected override void PositionalAi()
-    {
-        Projectile.ai[0] += 1f;
-        if (Projectile.ai[0] > 5f)
-        {
-            Projectile.ai[0] = 10f;
-            Projectile.velocity.X *= 0.99f;
-            Projectile.velocity.Y += 1 - 0.89f;
-        }
-
-        Projectile.rotation += Projectile.velocity.X * 0.1f;
     }
 
     protected override void ParticleOnKill()
