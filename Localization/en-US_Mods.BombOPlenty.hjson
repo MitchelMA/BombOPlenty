@@ -5,6 +5,14 @@ Items: {
 		DisplayName: Wall Bomb
 		Tooltip: A small explosion that will destroy most walls
 	}
+
+	TileBomb: {
+		DisplayName: Tile Bomb
+		Tooltip: A small explosion that will destroy most tiles
+	}
 }
 
-Projectiles.WallBombProjectile.DisplayName: Wall Bomb Projectile
+Projectiles: {
+	WallBombProjectile.DisplayName: Wall Bomb Projectile
+	TileBombProjectile.DisplayName: Tile Bomb Projectile
+}
