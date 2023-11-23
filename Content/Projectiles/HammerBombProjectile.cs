@@ -36,7 +36,7 @@ public class HammerBombProjectile : BombProjectile
             Projectile.velocity.Y += 1 - 0.89f;
         }
 
-        Projectile.rotation += Projectile.velocity.X * 0.1f;
+        Projectile.rotation += Projectile.velocity.X * 0.14f;
     }
 
     protected override void ParticleOnKill()
