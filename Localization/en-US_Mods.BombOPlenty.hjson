@@ -16,8 +16,8 @@ Items: {
 		Tooltip: ""
 	}
 
-	KidsHammer: {
-		DisplayName: Kid's Hammer
+	TinyHammer: {
+		DisplayName: Tiny Hammer
 		Tooltip: Perfect for the Tarrarian's kids
 	}
 }

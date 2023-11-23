@@ -20,12 +20,6 @@ public class FuseProjectile : BombProjectile
 
         Projectile.timeLeft = 4 * UnitHelpers.SecondsToTicks;
     }
-
-    public override void OnSpawn(IEntitySource source)
-    {
-        Projectile.ai[1] = 2f;
-    }
-
     protected override void ParticleOnKill()
     {
         for (var i = 0; i < 80; i++)

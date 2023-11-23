@@ -14,7 +14,6 @@ public class HammerBombProjectile : BombProjectile
         KnockBack = 10f;
         Radius = 6f;
         
-        Projectile.aiStyle = ProjectileID.Bomb;
         DrawOriginOffsetY = 5;
         Projectile.width = NormalSize.X;
         Projectile.height = NormalSize.Y;
@@ -33,10 +32,10 @@ public class HammerBombProjectile : BombProjectile
         {
             Projectile.ai[0] = 10f;
             Projectile.velocity.X *= 0.99f;
-            Projectile.velocity.Y += 1 - 0.89f;
+            Projectile.velocity.Y += 0.2f;
         }
 
-        Projectile.rotation += Projectile.velocity.X * 0.14f;
+        Projectile.rotation += Projectile.velocity.X * 0.12f;
     }
 
     protected override void ParticleOnKill()

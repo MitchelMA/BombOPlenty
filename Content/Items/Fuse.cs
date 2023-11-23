@@ -7,6 +7,7 @@ public class Fuse : ModItem
     public override void SetDefaults()
     {
         Item.useStyle = ItemUseStyleID.Shoot;
+        Item.UseSound = SoundID.Item1;
         Item.shootSpeed = 8f;
         Item.shoot = ModContent.ProjectileType<FuseProjectile>();
         Item.consumable = true;

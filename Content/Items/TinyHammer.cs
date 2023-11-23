@@ -1,15 +1,23 @@
 ﻿namespace BombOPlenty.Content.Items;
 
-public class KidsHammer : ModItem
+public class TinyHammer : ModItem
 {
     public override void SetDefaults()
     {
-        Item.CloneDefaults(ItemUseStyleID.Swing);
+        Item.useStyle = ItemUseStyleID.Swing;
+        Item.UseSound = SoundID.Item1;
         Item.width = 22;
-        Item.height = 30;
+        Item.height = 22;
         Item.maxStack = 1;
         Item.hammer = 15;
         Item.damage = 1;
+        Item.knockBack = 6;
+        Item.tileBoost = -2;
+        Item.scale = 1.2f;
+        
+        Item.autoReuse = true;
+        Item.material = true;
+        Item.useTurn = true;
         
         Item.useTime = 25;
         Item.useAnimation = 25;

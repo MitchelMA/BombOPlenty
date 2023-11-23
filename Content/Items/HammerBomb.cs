@@ -5,6 +5,7 @@ public class HammerBomb : ModItem
     public override void SetDefaults()
     {
         Item.useStyle = ItemUseStyleID.Shoot;
+        Item.UseSound = SoundID.Item1;
         Item.shootSpeed = 6f;
         Item.shoot = ModContent.ProjectileType<Projectiles.HammerBombProjectile>();
         Item.consumable = true;
@@ -18,10 +19,10 @@ public class HammerBomb : ModItem
 
     public override void AddRecipes()
     {
-        const int outputAmount = 50;
-        var recipe = CreateRecipe(outputAmount);
-        recipe.AddIngredient(ItemID.WoodenHammer);
-        recipe.AddIngredient(ItemID.Bomb, outputAmount);
+        var recipe = CreateRecipe(5);
+        recipe.AddIngredient<TinyHammer>();
+        recipe.AddIngredient<Fuse>();
+        recipe.AddIngredient(ItemID.ExplosivePowder);
         recipe.AddTile(TileID.WorkBenches);
         recipe.Register();
     }
