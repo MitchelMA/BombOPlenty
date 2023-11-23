@@ -15,6 +15,11 @@ Items: {
 		DisplayName: Fuse
 		Tooltip: ""
 	}
+
+	KidsHammer: {
+		DisplayName: Kid's Hammer
+		Tooltip: Perfect for the Tarrarian's kids
+	}
 }
 
 Projectiles: {
