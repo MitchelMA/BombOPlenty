@@ -50,16 +50,16 @@ public abstract class BombProjectile : ModProjectile
         ExplosionEffect();
     }
 
-    protected void FuseParticleAi()
+    protected virtual void FuseParticleAi()
     {
-        var absFusePos = Projectile.Center + FuseRelPosition.RotatedBy(Projectile.rotation) * 1.1f;
+        var absFusePos = Projectile.Center + FuseRelPosition.RotatedBy(Projectile.rotation);
         if (!Main.rand.NextBool(2)) return;
         
-        var fuseDust = Dust.NewDustDirect(absFusePos, 2, 2, DustID.Torch, 0, 0, 100);
+        var fuseDust = Dust.NewDustDirect(absFusePos, 1, 1, DustID.Torch, 0, 0, 100);
         fuseDust.scale = 1f + Main.rand.Next(5) * 0.1f;
         fuseDust.noGravity = true;
         
-        var fuseSmokeDust = Dust.NewDustDirect(absFusePos, 2, 2, DustID.Smoke, 1, -1, 100);
+        var fuseSmokeDust = Dust.NewDustDirect(absFusePos, 1, 1, DustID.Smoke, 1, -1, 100);
         fuseSmokeDust.scale = 1f + Main.rand.Next(5) * 0.5f;
         fuseSmokeDust.noGravity = true;
     }

@@ -10,9 +10,15 @@ Items: {
 		DisplayName: Hammer Bomb
 		Tooltip: Trump's worst nightmare
 	}
+
+	Fuse: {
+		DisplayName: Fuse
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
-	HammerBombProjectile.DisplayName: Hammer Bomb Projectile
-	TileBombProjectile.DisplayName: Tile Bomb Projectile
+	HammerBombProjectile.DisplayName: Hammer Bomb
+	TileBombProjectile.DisplayName: Tile Bomb
+	FuseProjectile.DisplayName: Fuse
 }

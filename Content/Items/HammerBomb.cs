@@ -1,4 +1,4 @@
-﻿namespace BombOPlenty.Items;
+﻿namespace BombOPlenty.Content.Items;
 
 public class HammerBomb : ModItem
 {
@@ -8,7 +8,7 @@ public class HammerBomb : ModItem
         Item.shootSpeed = 6f;
         Item.shoot = ModContent.ProjectileType<Projectiles.HammerBombProjectile>();
         Item.consumable = true;
-        Item.maxStack = 9999;
+        Item.maxStack = Item.CommonMaxStack;
         Item.width = 22;
         Item.height = 30;
         Item.useAnimation = 1 * UnitHelpers.SecondsToTicks;

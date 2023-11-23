@@ -1,4 +1,4 @@
-﻿namespace BombOPlenty.Items;
+﻿namespace BombOPlenty.Content.Items;
 
 public class TileBomb : ModItem
 {
