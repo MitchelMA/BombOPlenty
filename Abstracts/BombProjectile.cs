@@ -1,4 +1,6 @@
-﻿namespace BombOPlenty.Abstracts;
+﻿using System;
+
+namespace BombOPlenty.Abstracts;
 
 public abstract class BombProjectile : ModProjectile
 {
@@ -17,6 +19,7 @@ public abstract class BombProjectile : ModProjectile
 
     protected abstract void ParticleOnKill();
     protected abstract void ExplosionEffect();
+    protected virtual void OnKillExtra(int timeLeft) { }
 
     protected virtual void OnCollision(Vector2 oldVelocity) { }
     protected virtual void OnHorizontalCollision(Vector2 oldVelocity, bool wasCeiling) { }
@@ -48,6 +51,7 @@ public abstract class BombProjectile : ModProjectile
         ParticleOnKill();
         Projectile.Resize(NormalSize.X, NormalSize.Y);
         ExplosionEffect();
+        OnKillExtra(timeLeft);
     }
 
     protected virtual void FuseParticleAi()
@@ -66,11 +70,11 @@ public abstract class BombProjectile : ModProjectile
 
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
-        OnCollision(oldVelocity);
-        if (Projectile.velocity.X != oldVelocity.X)
+        if (Math.Abs(Projectile.velocity.X - oldVelocity.X) > 0.01f)
             OnVerticalCollision(oldVelocity, oldVelocity.X < 0);
-        if (Projectile.velocity.Y != oldVelocity.Y)
+        if (Math.Abs(Projectile.velocity.Y - oldVelocity.Y) > 0.01f)
             OnHorizontalCollision(oldVelocity, oldVelocity.Y < 0);
+        OnCollision(oldVelocity);
         return KillOnTileHit && base.OnTileCollide(oldVelocity);
     }
 }
