@@ -20,10 +20,16 @@ Items: {
 		DisplayName: Tiny Hammer
 		Tooltip: Perfect for the Tarrarian's kids
 	}
+
+	CFour: {
+		DisplayName: C4
+		Tooltip: ""
+	}
 }
 
 Projectiles: {
 	HammerBombProjectile.DisplayName: Hammer Bomb
 	TileBombProjectile.DisplayName: Tile Bomb
 	FuseProjectile.DisplayName: Fuse
+	CFourProjectile.DisplayName: C4
 }

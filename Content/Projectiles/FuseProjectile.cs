@@ -42,12 +42,12 @@ public class FuseProjectile : BombProjectile
     {
     }
 
-    protected override void OnWallCollision(Vector2 oldVelocity)
+    protected override void OnVerticalCollision(Vector2 oldVelocity, bool wasLeft)
     {
         Projectile.velocity.X = -oldVelocity.X * 0.35f;
     }
 
-    protected override void OnGroundCollision(Vector2 oldVelocity)
+    protected override void OnHorizontalCollision(Vector2 oldVelocity, bool wasCeiling)
     {
         Projectile.velocity.Y = -oldVelocity.Y * 0.23f;
         Projectile.velocity.X *= 0.65f;

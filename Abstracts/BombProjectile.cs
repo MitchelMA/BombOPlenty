@@ -19,8 +19,8 @@ public abstract class BombProjectile : ModProjectile
     protected abstract void ExplosionEffect();
 
     protected virtual void OnCollision(Vector2 oldVelocity) { }
-    protected virtual void OnGroundCollision(Vector2 oldVelocity) { }
-    protected virtual void OnWallCollision(Vector2 oldVelocity) { }
+    protected virtual void OnHorizontalCollision(Vector2 oldVelocity, bool wasCeiling) { }
+    protected virtual void OnVerticalCollision(Vector2 oldVelocity, bool wasLeft) { }
 
     public override void AI()
     {
@@ -67,8 +67,10 @@ public abstract class BombProjectile : ModProjectile
     public override bool OnTileCollide(Vector2 oldVelocity)
     {
         OnCollision(oldVelocity);
-        if (Projectile.velocity.X != oldVelocity.X) OnWallCollision(oldVelocity);
-        if (Projectile.velocity.Y != oldVelocity.Y) OnGroundCollision(oldVelocity);
+        if (Projectile.velocity.X != oldVelocity.X)
+            OnVerticalCollision(oldVelocity, oldVelocity.X < 0);
+        if (Projectile.velocity.Y != oldVelocity.Y)
+            OnHorizontalCollision(oldVelocity, oldVelocity.Y < 0);
         return KillOnTileHit && base.OnTileCollide(oldVelocity);
     }
 }
