@@ -10,4 +10,13 @@ public class CFour : ModItem
         Item.width = 18;
         Item.height = 18;
     }
+
+    public override void AddRecipes()
+    {
+        var recipe = CreateRecipe();
+        recipe.AddIngredient(ItemID.Wire);
+        recipe.AddIngredient(ItemID.StickyBomb);
+        recipe.AddTile(TileID.WorkBenches);
+        recipe.Register();
+    }
 }

@@ -8,6 +8,6 @@ public abstract class ProjectileTracker<T>
     protected static readonly Dictionary<int, HashSet<T>> Tracked = new ();
 
     public abstract T? Register(int playerIdx, T projectile);
-    public abstract T? Kill(int playerIdx, T projectile);
+    public abstract T? Unregister(int playerIdx, T projectile);
     public abstract int TrackedCount(int playerIdx);
 }

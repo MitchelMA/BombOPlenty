@@ -26,7 +26,7 @@ public class CFourTracker : ProjectileTracker<CFourProjectile>
         return projectile;
     }
 
-    public override CFourProjectile? Kill(int playerIdx, CFourProjectile projectile)
+    public override CFourProjectile? Unregister(int playerIdx, CFourProjectile projectile)
     {
         if (!Tracked.ContainsKey(playerIdx))
             return null;

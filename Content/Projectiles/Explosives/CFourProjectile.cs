@@ -72,7 +72,7 @@ public class CFourProjectile : BombProjectile
 
     protected override void OnKillExtra(int timeLeft)
     {
-        CFourTracker.Instance.Kill(Projectile.owner, this);
+        CFourTracker.Instance.Unregister(Projectile.owner, this);
     }
 
     protected override void OnHorizontalCollision(Vector2 oldVelocity, bool wasCeiling)
