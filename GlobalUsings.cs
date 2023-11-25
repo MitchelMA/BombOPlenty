@@ -1,6 +1,5 @@
 ﻿global using BombOPlenty;
 global using BombOPlenty.Helpers;
-global using BombOPlenty.Abstracts;
 global using BombOPlenty.Content;
 global using BombOPlenty.Trackers;
 global using BombOPlenty.Enums;

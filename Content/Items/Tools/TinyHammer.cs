@@ -1,4 +1,4 @@
-﻿namespace BombOPlenty.Content.Items;
+﻿namespace BombOPlenty.Content.Items.Tools;
 
 public class TinyHammer : ModItem
 {

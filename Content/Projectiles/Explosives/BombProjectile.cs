@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BombOPlenty.Abstracts;
+namespace BombOPlenty.Content.Projectiles.Explosives;
 
 public abstract class BombProjectile : ModProjectile
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using BombOPlenty.Content.Projectiles;
+using BombOPlenty.Content.Projectiles.Explosives;
 
 namespace BombOPlenty.Trackers;
 

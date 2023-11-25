@@ -1,7 +1,7 @@
 ﻿using Terraria.Audio;
 using Terraria.GameContent.Achievements;
 
-namespace BombOPlenty.Content.Projectiles;
+namespace BombOPlenty.Content.Projectiles.Explosives;
 
 public class HammerBombProjectile : BombProjectile
 {

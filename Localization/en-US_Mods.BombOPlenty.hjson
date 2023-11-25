@@ -25,6 +25,36 @@ Items: {
 		DisplayName: C4
 		Tooltip: ""
 	}
+
+	CopperCFourRemote: {
+		DisplayName: Copper C4 Remote
+		Tooltip: ""
+	}
+
+	GoldCFourRemote: {
+		DisplayName: Gold C4 Remote
+		Tooltip: ""
+	}
+
+	PlatinumCFourRemote: {
+		DisplayName: Platinum C4 Remote
+		Tooltip: ""
+	}
+
+	SilverCFourRemote: {
+		DisplayName: Silver C4 Remote
+		Tooltip: ""
+	}
+
+	TinCFourRemote: {
+		DisplayName: Tin C4 Remote
+		Tooltip: ""
+	}
+
+	TungstenCFourRemote: {
+		DisplayName: Tungsten C4 Remote
+		Tooltip: ""
+	}
 }
 
 Projectiles: {

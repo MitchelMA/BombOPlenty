@@ -1,7 +1,6 @@
 ﻿using Terraria.Audio;
-using Terraria.DataStructures;
 
-namespace BombOPlenty.Content.Projectiles;
+namespace BombOPlenty.Content.Projectiles.Explosives;
 
 public class FuseProjectile : BombProjectile
 {

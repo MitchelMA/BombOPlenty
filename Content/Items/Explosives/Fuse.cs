@@ -1,6 +1,6 @@
-﻿using BombOPlenty.Content.Projectiles;
+﻿using BombOPlenty.Content.Projectiles.Explosives;
 
-namespace BombOPlenty.Content.Items;
+namespace BombOPlenty.Content.Items.Explosives;
 
 public class Fuse : ModItem
 {

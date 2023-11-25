@@ -3,7 +3,7 @@ using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Achievements;
 
-namespace BombOPlenty.Content.Projectiles;
+namespace BombOPlenty.Content.Projectiles.Explosives;
 
 public class CFourProjectile : BombProjectile
 {
@@ -14,7 +14,7 @@ public class CFourProjectile : BombProjectile
     
     public override void SetDefaults()
     {
-        NormalSize = new Point(22, 22);
+        NormalSize = new Point(18, 18);
         ExplodingSize = new Point(140, 140);
         Damage = 110;
         KnockBack = 8f;
@@ -24,6 +24,7 @@ public class CFourProjectile : BombProjectile
         FuseRelPosition = new Vector2(0, 0);
         Projectile.width = NormalSize.X;
         Projectile.height = NormalSize.Y;
+        Projectile.timeLeft = 5 * UnitHelpers.MinutesToTicks;
 
         Projectile.ai[CollidedIndex] = 0;
         Projectile.ai[RotationIndex] = 0;
@@ -36,11 +37,10 @@ public class CFourProjectile : BombProjectile
 
     protected override void PositionalAi()
     {
-        if (Projectile.ai[CollidedIndex] > 0f)
-        {
-            Projectile.velocity = Vector2.Zero;
-            Projectile.rotation = Projectile.ai[RotationIndex];
-        }
+        if (!Collided) return;
+        
+        Projectile.velocity = Vector2.Zero;
+        Projectile.rotation = Projectile.ai[RotationIndex];
     }
 
     protected override void ParticleOnKill()
@@ -77,7 +77,7 @@ public class CFourProjectile : BombProjectile
 
     protected override void OnHorizontalCollision(Vector2 oldVelocity, bool wasCeiling)
     {
-        if (Projectile.ai[CollidedIndex] > 0f) return;
+        if (Collided) return;
         
         Projectile.ai[CollidedIndex] = 1f;
         Projectile.ai[RotationIndex] = MathF.PI * Convert.ToInt32(wasCeiling);
@@ -85,7 +85,7 @@ public class CFourProjectile : BombProjectile
 
     protected override void OnVerticalCollision(Vector2 oldVelocity, bool wasLeft)
     {
-        if (Projectile.ai[CollidedIndex] > 0f) return;
+        if (Collided) return;
         
         Projectile.ai[CollidedIndex] = 1f;
         Projectile.ai[RotationIndex] = (MathHelper.TwoPi - MathHelper.PiOver2) - MathF.PI * Convert.ToInt32(wasLeft);

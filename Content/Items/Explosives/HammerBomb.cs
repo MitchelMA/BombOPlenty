@@ -1,4 +1,7 @@
-﻿namespace BombOPlenty.Content.Items;
+﻿using BombOPlenty.Content.Items.Tools;
+using BombOPlenty.Content.Projectiles.Explosives;
+
+namespace BombOPlenty.Content.Items.Explosives;
 
 public class HammerBomb : ModItem
 {
@@ -7,7 +10,7 @@ public class HammerBomb : ModItem
         Item.useStyle = ItemUseStyleID.Shoot;
         Item.UseSound = SoundID.Item1;
         Item.shootSpeed = 6f;
-        Item.shoot = ModContent.ProjectileType<Projectiles.HammerBombProjectile>();
+        Item.shoot = ModContent.ProjectileType<HammerBombProjectile>();
         Item.consumable = true;
         Item.maxStack = Item.CommonMaxStack;
         Item.width = 22;
