@@ -11,9 +11,15 @@ public abstract class BombProjectile : ModProjectile
     protected int Damage;
     protected float KnockBack;
     protected float Radius;
+
+    protected const int ExplodingTimeLeft = 3;
     
     protected bool KillOnTileHit = false;
 
+    protected virtual bool EarlyAi()
+    {
+        return true;
+    }
     protected virtual void PositionalAi() { }
     protected virtual void ExtraParticleAi() { }
 
@@ -27,7 +33,8 @@ public abstract class BombProjectile : ModProjectile
 
     public override void AI()
     {
-        if (Projectile.owner == Main.myPlayer && Projectile.timeLeft <= 3)
+        if (!EarlyAi()) return;
+        if (Projectile.owner == Main.myPlayer && Projectile.timeLeft <= ExplodingTimeLeft)
         {
             Projectile.tileCollide = false;
             Projectile.alpha = 255;

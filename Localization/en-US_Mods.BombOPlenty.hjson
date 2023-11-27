@@ -55,6 +55,11 @@ Items: {
 		DisplayName: Tungsten C4 Remote
 		Tooltip: ""
 	}
+
+	BombArrow: {
+		DisplayName: Bomb Arrow
+		Tooltip: Creates a small explosion where the arrow landed
+	}
 }
 
 Projectiles: {
@@ -62,4 +67,5 @@ Projectiles: {
 	TileBombProjectile.DisplayName: Tile Bomb
 	FuseProjectile.DisplayName: Fuse
 	CFourProjectile.DisplayName: C4
+	BombArrowProjectile.DisplayName: Bomb Arrow
 }
