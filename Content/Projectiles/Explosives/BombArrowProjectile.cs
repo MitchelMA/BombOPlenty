@@ -44,8 +44,8 @@ public class BombArrowProjectile : BombProjectile
         if (target.friendly) return;
         
         // Otherwise the explosion won't do any damage to the npc on a direct hit
-        var didEnoughMultiplier = Convert.ToInt32(damageDone > Damage - 20);
-        target.immune[Projectile.owner] = 2 + 18 * didEnoughMultiplier;
+        var wasDirectMultiplier = Convert.ToInt32(!(Projectile.timeLeft > ExplodingTimeLeft));
+        target.immune[Projectile.owner] = 2 + 18 * wasDirectMultiplier;
         
         Projectile.timeLeft = ExplodingTimeLeft + 1;
     }
@@ -54,9 +54,9 @@ public class BombArrowProjectile : BombProjectile
     {
         if (!target.hostile) return;
         
-        // Otherwise the explosion won't do any damage to the npc on a direct hit
-        var didEnoughMultiplier = Convert.ToInt32(info.Damage > Damage - 20);
-        target.immuneTime = 2 + 18 * didEnoughMultiplier;
+        // Otherwise the explosion won't do any damage to the player on a direct hit
+        var wasDirectMultiplier = Convert.ToInt32(!(Projectile.timeLeft > ExplodingTimeLeft));
+        target.immuneTime = 2 + 18 * wasDirectMultiplier;
         
         Projectile.timeLeft = ExplodingTimeLeft + 1;
     }
