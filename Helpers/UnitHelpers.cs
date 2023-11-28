@@ -1,6 +1,4 @@
-﻿using Microsoft.Xna.Framework;
-
-namespace BombOPlenty.Helpers;
+﻿namespace BombOPlenty.Helpers;
 
 public static class UnitHelpers
 {
@@ -11,6 +9,6 @@ public static class UnitHelpers
 
     public static Vector2 ProjectilePositionToReal(this Vector2 pos)
     {
-        return pos / 16;
+        return pos / Constants.TileSize;
     }
 }

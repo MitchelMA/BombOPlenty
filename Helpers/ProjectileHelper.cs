@@ -5,11 +5,12 @@ public static class ProjectileHelper
     public static Player OwnerPlayer(this Projectile projectile) =>
         Main.player[projectile.owner];
 
-    public static bool HasTileBelow(this Projectile projectile)
+    public static bool HasTileBelow(this Projectile projectile, float rotationalOffset = 0)
     {
         var realCentre = projectile.Center.ProjectilePositionToReal();
+        var belowTileDist = MathHelper.Max(projectile.height / (2f * Constants.TileSize), 1);
         var belowPoint =
-            (realCentre + new Vector2(0, 1).RotatedBy(projectile.rotation))
+            (realCentre + new Vector2(0, belowTileDist).RotatedBy(projectile.rotation + rotationalOffset))
             .Vector2ToPoint();
 
         return Main.tile[belowPoint].HasTile;
