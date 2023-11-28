@@ -48,7 +48,7 @@ public class CFourTracker : ProjectileTracker<CFourProjectile>
         if (!Tracked.ContainsKey(playerIdx))
             return false;
 
-        foreach (var cFour in Tracked[playerIdx].Where(cFour => cFour.Collided))
+        foreach (var cFour in Tracked[playerIdx].Where(cFour => cFour.HasCollided))
             cFour.Projectile.timeLeft = 0;
 
         if (TrackedCount(playerIdx) == 0)

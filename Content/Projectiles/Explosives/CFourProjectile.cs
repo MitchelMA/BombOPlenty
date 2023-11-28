@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameContent.Achievements;
@@ -7,11 +8,12 @@ namespace BombOPlenty.Content.Projectiles.Explosives;
 
 public class CFourProjectile : BombProjectile
 {
-    private const int CollidedIndex = 1;
+    private const int CollisionIndex = 1;
     private const int RotationIndex = 2;
 
-    public bool Collided => Projectile.ai[CollidedIndex] > 0f;
-    
+    public bool HasCollided => ((int)Projectile.ai[CollisionIndex] & 1) > 0;
+    public bool IsColliding => ((int) Projectile.ai[CollisionIndex] & 2) > 0;
+
     public override void SetDefaults()
     {
         NormalSize = new Point(18, 18);
@@ -20,14 +22,12 @@ public class CFourProjectile : BombProjectile
         KnockBack = 8f;
         Radius = 5f;
         
-        Projectile.CloneDefaults(ProjectileID.Bomb);
-        FuseRelPosition = new Vector2(0, 0);
         Projectile.width = NormalSize.X;
         Projectile.height = NormalSize.Y;
         Projectile.timeLeft = 5 * UnitHelpers.MinutesToTicks;
 
-        Projectile.ai[CollidedIndex] = 0;
         Projectile.ai[RotationIndex] = 0;
+        Projectile.ai[CollisionIndex] = 0;
     }
 
     public override void OnSpawn(IEntitySource source)
@@ -37,10 +37,29 @@ public class CFourProjectile : BombProjectile
 
     protected override void PositionalAi()
     {
-        if (!Collided) return;
+        Projectile.ai[0]++;
+        if (Projectile.ai[0] > 5)
+        {
+            Projectile.ai[0] = 10f;
+            Projectile.velocity.X *= 0.99f;
+            Projectile.velocity.Y += 0.1f;
+        }
+
+        Projectile.rotation += Projectile.velocity.X * 0.12f;
         
+        if (!IsColliding) return;
+
         Projectile.velocity = Vector2.Zero;
         Projectile.rotation = Projectile.ai[RotationIndex];
+
+        var below = Projectile.HasTileBelow();
+        
+        if (!below)
+            UnsetIsColliding();
+    }
+
+    protected override void FuseParticleAi()
+    {
     }
 
     protected override void ParticleOnKill()
@@ -65,8 +84,8 @@ public class CFourProjectile : BombProjectile
     {
         SoundEngine.PlaySound(SoundID.Item14, Projectile.position);
         AchievementsHelper.CurrentlyMining = true;
-        ExplosionHelpers.KillTiles(Projectile.position, Radius);
-        ExplosionHelpers.KillWalls(Projectile.position, Radius + 1f, true);
+        ExplosionHelpers.KillTiles(Projectile.Center, Radius);
+        ExplosionHelpers.KillWalls(Projectile.Center, Radius + 1f, true);
         AchievementsHelper.CurrentlyMining = false;
     }
 
@@ -77,17 +96,41 @@ public class CFourProjectile : BombProjectile
 
     protected override void OnHorizontalCollision(Vector2 oldVelocity, bool wasCeiling)
     {
-        if (Collided) return;
+        if (IsColliding) return;
         
-        Projectile.ai[CollidedIndex] = 1f;
+        SetHasCollided();
+        SetIsColliding();
+        Projectile.velocity = Vector2.Zero;
         Projectile.ai[RotationIndex] = MathF.PI * Convert.ToInt32(wasCeiling);
     }
-
+    
     protected override void OnVerticalCollision(Vector2 oldVelocity, bool wasLeft)
     {
-        if (Collided) return;
-        
-        Projectile.ai[CollidedIndex] = 1f;
+        if (IsColliding) return;
+
+        SetHasCollided();
+        SetIsColliding();
+        Projectile.velocity = Vector2.Zero;
         Projectile.ai[RotationIndex] = (MathHelper.TwoPi - MathHelper.PiOver2) - MathF.PI * Convert.ToInt32(wasLeft);
+    }
+    
+    private void SetHasCollided()
+    {
+        Projectile.ai[CollisionIndex] = (int) Projectile.ai[CollisionIndex] | 1;
+    }
+
+    private void UnsetHasCollided()
+    {
+        Projectile.ai[CollisionIndex] = (int) Projectile.ai[CollisionIndex] & ~1;
+    }
+
+    private void SetIsColliding()
+    {
+        Projectile.ai[CollisionIndex] = (int) Projectile.ai[CollisionIndex] | 1 << 1;
+    }
+
+    private void UnsetIsColliding()
+    {
+        Projectile.ai[CollisionIndex] = (int) Projectile.ai[CollisionIndex] & ~ (1 << 1);
     }
 }

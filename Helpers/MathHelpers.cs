@@ -19,4 +19,9 @@ public static class MathHelpers
 
         return value;
     }
+
+    public static Point Vector2ToPoint(this Vector2 vec)
+    {
+        return new Point((int) vec.X, (int) vec.Y);
+    }
 }
