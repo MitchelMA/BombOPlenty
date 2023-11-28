@@ -1,19 +1,14 @@
-﻿using Microsoft.Xna.Framework;
-using Terraria;
-using Terraria.ID;
-using Terraria.ModLoader;
-
-namespace BombOPlenty.Helpers;
+﻿namespace BombOPlenty.Helpers;
 
 public static class ExplosionHelpers
 {
     public static void KillWalls(Vector2 centre, float radius, bool behindTiles = false)
     {
-        var realCentre = centre.ProjectilePositionToReal();
-        var minTileX = MathHelpers.Clamp((int)(realCentre.X - radius), 0, Main.maxTilesX);
-        var maxTileX = MathHelpers.Clamp((int)(realCentre.X + radius), 0, Main.maxTilesX);
-        var minTileY = MathHelpers.Clamp((int)(realCentre.Y - radius), 0, Main.maxTilesY);
-        var maxTileY = MathHelpers.Clamp((int)(realCentre.Y + radius), 0, Main.maxTilesY);
+        var tileAligned = centre.AlignToTiles();
+        var minTileX = MathHelpers.Clamp((int)(tileAligned.X - radius), 0, Main.maxTilesX);
+        var maxTileX = MathHelpers.Clamp((int)(tileAligned.X + radius), 0, Main.maxTilesX);
+        var minTileY = MathHelpers.Clamp((int)(tileAligned.Y - radius), 0, Main.maxTilesY);
+        var maxTileY = MathHelpers.Clamp((int)(tileAligned.Y + radius), 0, Main.maxTilesY);
 
         for (var i = minTileX; i < maxTileX; i++)
         {
@@ -21,7 +16,7 @@ public static class ExplosionHelpers
             {
                 var tilePos = new Point(i, j);
                 
-                if (Vector2.Distance(new Vector2(tilePos.X, tilePos.Y), realCentre) > radius)
+                if (Vector2.Distance(new Vector2(tilePos.X, tilePos.Y), tileAligned) > radius)
                     continue;
 
                 var tile = Main.tile[tilePos];
@@ -45,11 +40,11 @@ public static class ExplosionHelpers
 
     public static void KillTiles(Vector2 centre, float radius)
     {
-        var realCentre = centre.ProjectilePositionToReal();
-        var minTileX = MathHelpers.Clamp((int)(realCentre.X - radius), 0, Main.maxTilesX);
-        var maxTileX = MathHelpers.Clamp((int)(realCentre.X + radius), 0, Main.maxTilesX);
-        var minTileY = MathHelpers.Clamp((int)(realCentre.Y - radius), 0, Main.maxTilesY);
-        var maxTileY = MathHelpers.Clamp((int)(realCentre.Y + radius), 0, Main.maxTilesY);
+        var tileAligned = centre.AlignToTiles();
+        var minTileX = MathHelpers.Clamp((int)(tileAligned.X - radius), 0, Main.maxTilesX);
+        var maxTileX = MathHelpers.Clamp((int)(tileAligned.X + radius), 0, Main.maxTilesX);
+        var minTileY = MathHelpers.Clamp((int)(tileAligned.Y - radius), 0, Main.maxTilesY);
+        var maxTileY = MathHelpers.Clamp((int)(tileAligned.Y + radius), 0, Main.maxTilesY);
 
         for (var i = minTileX; i < maxTileX; i++)
         {
@@ -57,7 +52,7 @@ public static class ExplosionHelpers
             {
                 var tilePos = new Point(i, j);
                 
-                if (Vector2.Distance(new Vector2(tilePos.X, tilePos.Y), realCentre) > radius)
+                if (Vector2.Distance(new Vector2(tilePos.X, tilePos.Y), tileAligned) > radius)
                     continue;
 
                 var tile = Main.tile[tilePos];

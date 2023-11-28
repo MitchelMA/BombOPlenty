@@ -7,7 +7,7 @@ public static class ProjectileHelper
 
     public static bool HasTileBelow(this Projectile projectile, float rotationalOffset = 0)
     {
-        var realCentre = projectile.Center.ProjectilePositionToReal();
+        var realCentre = projectile.Center.AlignToTiles();
         var belowTileDist = MathHelper.Max(projectile.height / (2f * Constants.TileSize), 1);
         var belowPoint =
             (realCentre + new Vector2(0, belowTileDist).RotatedBy(projectile.rotation + rotationalOffset))
