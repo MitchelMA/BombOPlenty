@@ -25,6 +25,8 @@ public class CFourProjectile : BombProjectile
         Projectile.width = NormalSize.X;
         Projectile.height = NormalSize.Y;
         Projectile.timeLeft = 5 * UnitHelpers.MinutesToTicks;
+        Projectile.friendly = true;
+        Projectile.hostile = true;
 
         Projectile.ai[RotationIndex] = 0;
         Projectile.ai[CollisionIndex] = 0;
