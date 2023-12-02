@@ -1,16 +1,18 @@
-﻿namespace BombOPlenty.Content.Items.Tools;
+﻿using System;
+
+namespace BombOPlenty.Content.Items.Tools;
 
 public class GoldCFourRemote : CFourRemote
 {
-    protected override int MaxCFourCount => 8;
+    protected override int MaxCFourCount => int.MaxValue;
     protected override float ShootSpeed => 6f;
     
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.GrayPressurePlate);
-        recipe.AddIngredient(ItemID.GoldWatch);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.GrayPressurePlate)
+            .AddIngredient(ItemID.GoldWatch)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

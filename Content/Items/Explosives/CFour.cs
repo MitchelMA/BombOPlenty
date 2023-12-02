@@ -13,10 +13,10 @@ public class CFour : ModItem
 
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.Wire);
-        recipe.AddIngredient(ItemID.StickyBomb);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.Wire)
+            .AddIngredient(ItemID.StickyBomb)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

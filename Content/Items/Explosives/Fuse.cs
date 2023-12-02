@@ -23,22 +23,22 @@ public class Fuse : ModItem
     public override void AddRecipes()
     {
         const int outputAmount = 5;
-        var recipe = CreateRecipe(outputAmount);
-        recipe.AddIngredient(ItemID.Rope);
-        recipe.AddIngredient(ItemID.ExplosivePowder);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe(outputAmount)
+            .AddIngredient(ItemID.Rope)
+            .AddIngredient(ItemID.ExplosivePowder)
+            .AddTile(TileID.WorkBenches)
+            .Register();
 
-        recipe = CreateRecipe(outputAmount);
-        recipe.AddIngredient(ItemID.VineRope);
-        recipe.AddIngredient(ItemID.ExplosivePowder);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe(outputAmount)
+            .AddIngredient(ItemID.VineRope)
+            .AddIngredient(ItemID.ExplosivePowder)
+            .AddTile(TileID.WorkBenches)
+            .Register();
 
-        recipe = CreateRecipe(outputAmount);
-        recipe.AddIngredient(ItemID.WebRope);
-        recipe.AddIngredient(ItemID.ExplosivePowder);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe(outputAmount)
+            .AddIngredient(ItemID.WebRope)
+            .AddIngredient(ItemID.ExplosivePowder)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

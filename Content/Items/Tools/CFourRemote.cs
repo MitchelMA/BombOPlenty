@@ -25,11 +25,11 @@ public abstract class CFourRemote : ModItem
     }
 
     public override bool CanShoot(Player player) =>
-        CFourTracker.Instance.TrackedCount(player.GetIndex()) < MaxCFourCount;
+        CFourTracker.Instance.TrackedCount(player.whoAmI) < MaxCFourCount;
     
     public override bool AltFunctionUse(Player player)
     {
-        CFourTracker.Instance.KillAll(player.GetIndex());
+        CFourTracker.Instance.KillAll(player.whoAmI);
         return base.AltFunctionUse(player);
     }
 }

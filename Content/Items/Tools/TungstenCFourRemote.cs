@@ -7,10 +7,10 @@ public class TungstenCFourRemote : CFourRemote
     
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.GrayPressurePlate);
-        recipe.AddIngredient(ItemID.TungstenWatch);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.GrayPressurePlate)
+            .AddIngredient(ItemID.TungstenWatch)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

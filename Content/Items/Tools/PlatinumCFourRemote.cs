@@ -4,10 +4,10 @@ public class PlatinumCFourRemote : GoldCFourRemote
 {
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.GrayPressurePlate);
-        recipe.AddIngredient(ItemID.PlatinumWatch);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.GrayPressurePlate)
+            .AddIngredient(ItemID.PlatinumWatch)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

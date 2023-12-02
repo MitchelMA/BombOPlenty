@@ -7,10 +7,10 @@ public class CopperCFourRemote : CFourRemote
 
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.GrayPressurePlate);
-        recipe.AddIngredient(ItemID.CopperWatch);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.GrayPressurePlate)
+            .AddIngredient(ItemID.CopperWatch)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

@@ -22,11 +22,11 @@ public class HammerBomb : ModItem
 
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe(5);
-        recipe.AddIngredient<TinyHammer>();
-        recipe.AddIngredient<Fuse>();
-        recipe.AddIngredient(ItemID.ExplosivePowder);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe(5)
+            .AddIngredient<TinyHammer>()
+            .AddIngredient<Fuse>()
+            .AddIngredient(ItemID.ExplosivePowder)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }

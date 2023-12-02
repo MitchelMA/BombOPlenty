@@ -25,9 +25,9 @@ public class TinyHammer : ModItem
 
     public override void AddRecipes()
     {
-        var recipe = CreateRecipe();
-        recipe.AddIngredient(ItemID.Wood, 2);
-        recipe.AddTile(TileID.WorkBenches);
-        recipe.Register();
+        CreateRecipe()
+            .AddIngredient(ItemID.Wood, 2)
+            .AddTile(TileID.WorkBenches)
+            .Register();
     }
 }
